@@ -26,8 +26,8 @@ float last_error = 0;
 
 float error;
 
-// --- ANTIWINDUP: Limite del integrador ---
-const float MAX_INTEGRAL = 50.0;  // Ajusta según tu sistema
+// Limite para el ANTIWINDUP
+const float MAX_INTEGRAL = 50.0;  
 
 String inputString = "";
 bool stringComplete = false;
@@ -176,8 +176,8 @@ void loop() {
     // P
     float P = Kp * error;
 
-    // I con ANTIWINDUP (limitador)
-    accumulated_error += error * 0.015;   // 15 ms 
+    // I c
+    accumulated_error += error * 0.015;   
     
     // Constrain que limita el error para evitar saltos bruscos (De -50 a 50)
     accumulated_error = constrain(accumulated_error, -MAX_INTEGRAL, MAX_INTEGRAL);
